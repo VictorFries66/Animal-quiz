@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Personality Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <h1>What Type Are You?</h1>
+
+  <div id="quiz">
+    <p>1. What do you prefer?</p>
+    <button onclick="choose('A')">Reading a book</button>
+    <button onclick="choose('B')">Going to a party</button>
+
+    <p>2. Pick a weekend activity:</p>
+    <button onclick="choose('A')">Stay home</button>
+    <button onclick="choose('B')">Hang out with friends</button>
+  </div>
+
+  <h2 id="result"></h2>
+
+  <script>
+    const scores = { A: 0, B: 0 };
+    let answered = 0;
+
+    function choose(type) {
+      scores[type]++;
+      answered++;
+
+      if (answered === 2) {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      const result = document.getElementById("result");
+      if (scores.A > scores.B) {
+        result.innerText = "You are an Introvert!";
+      } else {
+        result.innerText = "You are an Extrovert!";
+      }
+    }
+  </script>
+</body>
+</html>
