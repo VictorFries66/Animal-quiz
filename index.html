@@ -3,43 +3,120 @@
 <head>
   <title>Personality Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: 40px auto; }
+    button { display: block; margin: 10px 0; padding: 10px; width: 100%; }
+    #result { margin-top: 30px; font-size: 20px; font-weight: bold; }
+  </style>
 </head>
 <body>
-  <h1>What Type Are You?</h1>
 
-  <div id="quiz">
-    <p>1. What do you prefer?</p>
-    <button onclick="choose('A')">Reading a book</button>
-    <button onclick="choose('B')">Going to a party</button>
+<h1>Personality Quiz</h1>
+<div id="quiz"></div>
+<div id="result"></div>
 
-    <p>2. Pick a weekend activity:</p>
-    <button onclick="choose('A')">Stay home</button>
-    <button onclick="choose('B')">Hang out with friends</button>
-  </div>
+<script>
+// ==========================
+// 1️⃣ DEFINE PERSONALITY TYPES
+// ==========================
+const types = {
+  A: "The Thinker 🧠",
+  B: "The Adventurer 🌍",
+  C: "The Leader 👑",
+  D: "The Creator 🎨"
+};
 
-  <h2 id="result"></h2>
+// ==========================
+// 2️⃣ DEFINE QUESTIONS
+// Each answer gives points to a type
+// ==========================
+const questions = [
+  {
+    question: "What sounds most fun?",
+    answers: [
+      { text: "Reading quietly", type: "A" },
+      { text: "Exploring a new city", type: "B" },
+      { text: "Organizing a group event", type: "C" },
+      { text: "Making art or music", type: "D" }
+    ]
+  },
+  {
+    question: "People describe you as:",
+    answers: [
+      { text: "Analytical", type: "A" },
+      { text: "Energetic", type: "B" },
+      { text: "Confident", type: "C" },
+      { text: "Creative", type: "D" }
+    ]
+  },
+  {
+    question: "Your ideal weekend:",
+    answers: [
+      { text: "Learning something new", type: "A" },
+      { text: "Outdoor adventure", type: "B" },
+      { text: "Networking event", type: "C" },
+      { text: "Working on a passion project", type: "D" }
+    ]
+  }
+];
 
-  <script>
-    const scores = { A: 0, B: 0 };
-    let answered = 0;
+// ==========================
+// QUIZ LOGIC
+// ==========================
 
-    function choose(type) {
-      scores[type]++;
-      answered++;
+let currentQuestion = 0;
+const scores = {};
 
-      if (answered === 2) {
-        showResult();
-      }
+Object.keys(types).forEach(t => scores[t] = 0);
+
+function loadQuestion() {
+  const quizDiv = document.getElementById("quiz");
+  quizDiv.innerHTML = "";
+
+  if (currentQuestion >= questions.length) {
+    showResult();
+    return;
+  }
+
+  const q = questions[currentQuestion];
+
+  const questionEl = document.createElement("h3");
+  questionEl.innerText = q.question;
+  quizDiv.appendChild(questionEl);
+
+  q.answers.forEach(answer => {
+    const button = document.createElement("button");
+    button.innerText = answer.text;
+    button.onclick = () => selectAnswer(answer.type);
+    quizDiv.appendChild(button);
+  });
+}
+
+function selectAnswer(type) {
+  scores[type]++;
+  currentQuestion++;
+  loadQuestion();
+}
+
+function showResult() {
+  const resultDiv = document.getElementById("result");
+
+  let topType = null;
+  let highestScore = -1;
+
+  for (let type in scores) {
+    if (scores[type] > highestScore) {
+      highestScore = scores[type];
+      topType = type;
     }
+  }
 
-    function showResult() {
-      const result = document.getElementById("result");
-      if (scores.A > scores.B) {
-        result.innerText = "You are an Introvert!";
-      } else {
-        result.innerText = "You are an Extrovert!";
-      }
-    }
-  </script>
+  resultDiv.innerText = "Your result: " + types[topType];
+  document.getElementById("quiz").innerHTML = "";
+}
+
+loadQuestion();
+</script>
+
 </body>
 </html>
