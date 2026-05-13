@@ -143,10 +143,17 @@ function showResult() {
     }
   }
 
-  resultDiv.innerText = "Your result: " + types[topType];
+  const resultData = types[topType];
+
+  resultDiv.innerHTML = `
+    <h2>Your result: ${resultData.name}</h2>
+    <img src="${resultData.image}" 
+         alt="${resultData.name}" 
+         style="max-width:100%; border-radius:10px; margin-top:15px;">
+  `;
+
   document.getElementById("quiz").innerHTML = "";
 }
-
 loadQuestion();
 </script>
 
