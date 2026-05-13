@@ -25,7 +25,9 @@ const types = {
   C: "Zebra 🦓",
   D: "Camel 🐪",
   E: "Penguin 🐧",
-  F: "Hedgehog 🦔"
+  F: "Hedgehog 🦔",
+  G: "Fox 🦊",
+  H: "Alligator 🐊"
 };
 
 // ==========================
@@ -36,57 +38,56 @@ const questions = [
   {
     question: "On the weekend I want to go to...",
     answers: [
-      { text: "Stadium City", type: "A" },
-      { text: "Cocowalk", type: "B" },
-      { text: "Stay at home", type: "C" },
-      { text: "a Cafe", type: "D" },
-      { text: "Club activities", type: "E" },
-      { text: "Nakaojo Park", type: "F" }
+      { text: "Stadium City", type: "H" },     // Competitive → Alligator
+      { text: "Cocowalk", type: "B" },         // Social → Dolphin
+      { text: "Stay at home", type: "F" },     // Introvert → Hedgehog
+      { text: "a Cafe", type: "A" },           // Thoughtful → Owl
+      { text: "Club activities", type: "E" },  // Team-based → Penguin
+      { text: "Nakaojo Park", type: "C" }      // Free/expressive → Zebra
     ]
   },
   {
     question: "I would like to live in...:",
     answers: [
-      { text: "The Mountains", type: "A" },
-      { text: "Near the Sea", type: "B" },
-      { text: "In the City", type: "C" },
-      { text: "In the Countryside", type: "D" },
-      { text: "On the moon", type: "E" },
-      { text: "In a forest", type: "F" }
+      { text: "The Mountains", type: "A" },      // Wise owl vibes
+      { text: "Near the Sea", type: "B" },       // Dolphin
+      { text: "In the City", type: "G" },        // Clever/strategic → Fox
+      { text: "In the Countryside", type: "D" }, // Calm → Camel
+      { text: "On the moon", type: "C" },        // Unique → Zebra
+      { text: "In a forest", type: "F" }         // Quiet → Hedgehog
     ]
   },
   {
-
- question: "I most enjoy playing...:",
+    question: "I most enjoy playing...:",
     answers: [
-      { text: "Basketball", type: "A" },
-      { text: "Baseball", type: "B" },
-      { text: "Soccer", type: "C" },
-      { text: "Volleyball", type: "D" },
-      { text: "Tennis", type: "E" },
-      { text: "Rugby", type: "F" }
-     ]
+      { text: "Basketball", type: "H" },   // Competitive → Alligator
+      { text: "Baseball", type: "E" },     // Team loyalty → Penguin
+      { text: "Soccer", type: "B" },       // Energetic → Dolphin
+      { text: "Volleyball", type: "C" },   // Expressive/team mix → Zebra
+      { text: "Tennis", type: "G" },       // Strategic → Fox
+      { text: "Rugby", type: "H" }         // Physical strength → Alligator
+    ]
   },
   {
-     question: "In the future, I would like to be a..:",
+    question: "In the future, I would like to be a..:",
     answers: [
-      { text: "Doctor", type: "A" },
-      { text: "Lawyer", type: "B" },
-      { text: "Scientist", type: "C" },
-      { text: "Nurse", type: "D" },
-      { text: "Teacher", type: "E" },
-      { text: "Pharmacist", type: "F" }
-     ]
+      { text: "Doctor", type: "E" },       // Caring → Penguin
+      { text: "Lawyer", type: "G" },       // Strategic → Fox
+      { text: "Scientist", type: "A" },    // Intelligent → Owl
+      { text: "Nurse", type: "E" },        // Caring → Penguin
+      { text: "Teacher", type: "A" },      // Knowledge → Owl
+      { text: "Pharmacist", type: "D" }    // Calm/steady → Camel
+    ]
   },
   {
     question: "My favorite kind of movie is...:",
     answers: [
-      { text: "Action", type: "A" },
-      { text: "Sci-fi", type: "B" },
-      { text: "Romance", type: "C" },
-      { text: "Comedy", type: "D" },
-      { text: "Drama", type: "E" },
-      { text: "Music", type: "F" }
+      { text: "Action", type: "H" },   // Bold → Alligator
+      { text: "Sci-fi", type: "A" },   // Intellectual → Owl
+      { text: "Romance", type: "B" },  // Social/emotional → Dolphin
+      { text: "Comedy", type: "C" },   // Expressive → Zebra
+      { text: "Drama", type: "E" },    // Emotional loyalty → Penguin
+      { text: "Music", type: "C" }     // Creative → Zebra
     ]
   }
 ];
